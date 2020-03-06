@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-function AddItem() {
+function AddItem(props) {
 
     const [text, setText] = useState()
     const [checkbox, setCheckbox] = useState(false)
@@ -13,10 +13,11 @@ function AddItem() {
     }
     const AddNewItem = () => {
         let newItem = { text, checkbox }
-        console.log(newItem)
         setText("")
         setCheckbox(false)
+        props.add(newItem)
     }
+
 
 
 

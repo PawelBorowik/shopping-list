@@ -10,7 +10,9 @@ function App() {
   const [items, setItems] = useState(null)
 
   const addNewItem = items => {
-    console.log(items)
+
+    setItems(items)
+
 
   }
 
@@ -18,12 +20,12 @@ function App() {
     <div className="App">
       <h1>ShoppingList</h1>
       <header >
-        <AddItem />
+        <AddItem add={addNewItem} />
 
         <hr />
 
       </header>
-      <ShoppingList addNewItem={addNewItem} />
+      <ShoppingList newItem={items} />
     </div>
   );
 }
