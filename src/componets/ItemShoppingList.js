@@ -3,19 +3,19 @@ import Item from './Item'
 
 import '../style/App.css';
 
-function AddItem() {
+function ItemShopingList() {
 
 
     return (
         <div className="App">
-            <header className="App-header">
-                Lista zakupów
-               <Item />
-                <Item />
-                <Item />
-            </header>
+
+            Lista zakupów
+            <Item />
+            <Item />
+            <Item />
+
         </div>
     );
 }
 
-export default AddItem;
+export default ItemShopingList;
