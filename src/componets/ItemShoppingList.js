@@ -27,7 +27,7 @@ function ItemShopingList(props) {
         })
         setItems(hideBought)
     }
-    const handleRemovetItem = (indx) => {
+    const handleRemovetBoughtItem = (indx) => {
         let removeItem = itemsFromForm.filter((product, index) => index !== indx)
         setItems(removeItem)
     }
@@ -35,12 +35,11 @@ function ItemShopingList(props) {
         let removeAllBoughtItem = itemsFromForm.filter(product => !product.bought)
         setItems(removeAllBoughtItem)
     }
+    const handleClearList = () => {
 
 
-
-
-
-
+        setItems([])
+    }
 
 
     return (
@@ -49,6 +48,10 @@ function ItemShopingList(props) {
             <div className="delete-all"
                 onClick={() => handleRemovetAllBoughtItem()}
             >usun wszystkie kupione
+            </div>
+            <div className="clear-list"
+                onClick={() => handleClearList()}
+            >Wyczyśc liste zakupów
             </div>
             <ul>
                 {itemsFromForm.map((item, indx) => {
@@ -60,7 +63,7 @@ function ItemShopingList(props) {
                                 {item.text}
 
                             </p>
-                            <span onClick={() => handleRemovetAllBoughtItem()}  >   x</span>
+                            <span onClick={() => handleRemovetBoughtItem(indx)}  >   x</span>
 
                         </li>
                     )
