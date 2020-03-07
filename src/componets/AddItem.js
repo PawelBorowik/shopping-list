@@ -12,10 +12,15 @@ function AddItem(props) {
         setCheckbox(e.target.checked)
     }
     const AddNewItem = () => {
-        let newItem = { text, checkbox }
-        setText("")
-        setCheckbox(false)
-        props.add(newItem)
+        if (!text) {
+            alert("pole nie moze być puste")
+        }
+        else {
+            let newItem = { text, checkbox }
+            setText("")
+            setCheckbox(false)
+            props.add(newItem)
+        }
     }
 
 
