@@ -36,6 +36,21 @@
     transform: rotate(360deg);
   }
 }
+.item{
+  cursor: pointer;
+  display: inline-block;
+}
 .important{
+  
   color: red
+}
+span{
+  padding:20px;
+  cursor: pointer;
+}
+
+.bought{
+  color:gray;
+  text-decoration: line-through;
+
 }

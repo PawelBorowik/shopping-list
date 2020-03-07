@@ -7,38 +7,55 @@ function ItemShopingList(props) {
 
     const [itemsFromForm, setItems] = useState([])
 
+
     // itm odnosi się do itemsFromForm ze state - zeby odwolać się do zmiennej poza useEffects, która moze być niedostepna
 
     useEffect(() => {
         if (props.newItem) {
             setItems(itm => [...itm, props.newItem])
+
         }
-
-
-
     }, [props.newItem])
 
+    useEffect(() => {
+
+    })
+    const handleBoughtItem = (indx) => {
+        let ccc = itemsFromForm.map((product, index) => {
+            if (index === indx) product.bought = !product.bought;
+            return product
+        })
+        setItems(ccc)
+    }
+
+
+
+
+    // ${bought ? "bought" : ""}
+    /* onClick={() => handleBoughtItem(indx)}> */
+    // className = {`${item.checkbox ? "important" : ""} ${item.bought ? "bought" : ""}`
 
 
 
     return (
         <div className="App">
-
             Lista zakupów
             <ul>
                 {itemsFromForm.map((item, indx) => {
                     return (
                         <li key={indx}>
-                            <h2 className={item.checkbox ? "important" : ""}>{item.text}</h2>
+                            <p className={`item ${item.checkbox ? "important" : ""} ${item.bought ? "bought" : ""}`}
+                                onClick={() => handleBoughtItem(indx)}
+                            >
+                                {item.text}
+
+                            </p>
+                            <span>   x</span>
 
                         </li>
                     )
-
-
                 })}
-
             </ul>
-
         </div>
     );
 }

@@ -5,6 +5,7 @@ function AddItem(props) {
 
     const [text, setText] = useState()
     const [checkbox, setCheckbox] = useState(false)
+    const [bought, setBought] = useState(false)
     const [alert, setAlert] = useState("")
     const handleChangeText = (e) => {
         setText(e.target.value)
@@ -17,9 +18,12 @@ function AddItem(props) {
             setAlert("dodaj produkt!")
         }
         else {
-            let newItem = { text, checkbox }
+            let newItem = { text, checkbox, bought }
+
             setText("")
             setCheckbox(false)
+            setBought(false)
+            setAlert("")
             props.add(newItem)
         }
     }
