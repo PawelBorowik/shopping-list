@@ -21,17 +21,19 @@ function ItemShopingList(props) {
 
     })
     const handleBoughtItem = (indx) => {
-        let ccc = itemsFromForm.map((product, index) => {
+        let hideBought = itemsFromForm.map((product, index) => {
             if (index === indx) product.bought = !product.bought;
             return product
         })
-        setItems(ccc)
+        setItems(hideBought)
     }
     const handleRemovetItem = (indx) => {
-        let ccc = itemsFromForm.filter((product, index) => index !== indx)
-
-
-        setItems(ccc)
+        let removeItem = itemsFromForm.filter((product, index) => index !== indx)
+        setItems(removeItem)
+    }
+    const handleRemovetAllBoughtItem = () => {
+        let removeAllBoughtItem = itemsFromForm.filter(product => !product.bought)
+        setItems(removeAllBoughtItem)
     }
 
 
@@ -44,6 +46,10 @@ function ItemShopingList(props) {
     return (
         <div className="App">
             Lista zakupów
+            <div className="delete-all"
+                onClick={() => handleRemovetAllBoughtItem()}
+            >usun wszystkie kupione
+            </div>
             <ul>
                 {itemsFromForm.map((item, indx) => {
                     return (
@@ -54,7 +60,7 @@ function ItemShopingList(props) {
                                 {item.text}
 
                             </p>
-                            <span onClick={() => handleRemovetItem(indx)}  >   x</span>
+                            <span onClick={() => handleRemovetAllBoughtItem()}  >   x</span>
 
                         </li>
                     )
