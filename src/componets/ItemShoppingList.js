@@ -27,13 +27,17 @@ function ItemShopingList(props) {
         })
         setItems(ccc)
     }
+    const handleRemovetItem = (indx) => {
+        let ccc = itemsFromForm.filter((product, index) => index !== indx)
+
+
+        setItems(ccc)
+    }
 
 
 
 
-    // ${bought ? "bought" : ""}
-    /* onClick={() => handleBoughtItem(indx)}> */
-    // className = {`${item.checkbox ? "important" : ""} ${item.bought ? "bought" : ""}`
+
 
 
 
@@ -50,7 +54,7 @@ function ItemShopingList(props) {
                                 {item.text}
 
                             </p>
-                            <span>   x</span>
+                            <span onClick={() => handleRemovetItem(indx)}  >   x</span>
 
                         </li>
                     )
