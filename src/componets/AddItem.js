@@ -5,6 +5,7 @@ function AddItem(props) {
 
     const [text, setText] = useState()
     const [checkbox, setCheckbox] = useState(false)
+    const [alert, setAlert] = useState("")
     const handleChangeText = (e) => {
         setText(e.target.value)
     }
@@ -13,7 +14,7 @@ function AddItem(props) {
     }
     const AddNewItem = () => {
         if (!text) {
-            alert("pole nie moze być puste")
+            setAlert("dodaj produkt!")
         }
         else {
             let newItem = { text, checkbox }
@@ -29,6 +30,7 @@ function AddItem(props) {
     return (
         <div className="form">
             <input type="text" placeholder="dodaj zakupy" value={text} onChange={handleChangeText} />
+            <p>{alert}</p>
             <input type="checkbox" id="importance" checked={checkbox} onChange={handleCheckbox} />
             <label htmlFor="importance">wazny zakup</label>
             <button onClick={() => AddNewItem()}>Dodaj do listy zakupów</button>
