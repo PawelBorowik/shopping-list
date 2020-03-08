@@ -36,7 +36,7 @@
     transform: rotate(360deg);
   }
 }
-.item{
+.list_item{
   cursor: pointer;
   display: inline-block;
 }
@@ -44,7 +44,8 @@
   
   color: red
 }
-span{
+.list_delete-icon{
+  font-size: 20px;
   padding:20px;
   cursor: pointer;
 }
@@ -54,21 +55,21 @@ span{
   text-decoration: line-through;
 
 }
-.delete-all-bought{
+.list_delete-all-bought{
   cursor: pointer;
   background-color:green;
 }
-.clear{
+.list_clear{
   cursor: pointer;
   background-color: yellow;
 }
 
-.abc{
+.list_warning{
   background-color:red;
   display:none;
 }
 
-.show-warning{ 
+.show--warning{ 
   display:block;
  
 

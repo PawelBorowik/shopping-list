@@ -50,20 +50,20 @@ function ItemShopingList(props) {
 
 
     return (
-        <div className="App">
+        <div className="list">
             Lista zakupów
-            <div className="delete-all-bought"
+            <div className="list_delete-all-bought"
                 onClick={() => handleRemovetAllBoughtItem()}>
 
                 usun wszystkie kupione
             </div>
 
-            <div className={`clear`}
+            <div className="list_clear"
                 onClick={() => handleWarning()}>
                 Wyczyśc liste zakupów
             </div>
 
-            <div className={`abc ${warning ? "show-warning" : ""} `}>
+            <div className={`list_warning ${warning ? "show--warning" : ""} `}>
                 czy na pewno?
                 <button onClick={() => handleClearList()}>tak</button>
                 <button onClick={() => handleWarning()} >nie</button>
@@ -75,13 +75,13 @@ function ItemShopingList(props) {
                 {itemsFromForm.map((item, indx) => {
                     return (
                         <li key={indx}>
-                            <p className={`item ${item.checkbox ? "important" : ""} ${item.bought ? "bought" : ""}`}
+                            <p className={`list_item ${item.checkbox ? "important" : ""} ${item.bought ? "bought" : ""}`}
                                 onClick={() => handleBoughtItem(indx)}
                             >
                                 {item.text}
 
                             </p>
-                            <span onClick={() => handleRemovetBoughtItem(indx)}  >   x</span>
+                            <span className="list_delete-icon" onClick={() => handleRemovetBoughtItem(indx)}  >   x</span>
 
                         </li>
                     )
