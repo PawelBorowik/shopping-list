@@ -19,7 +19,7 @@ function ItemShopingList(props) {
         }
     }, [props.newItem])
 
-
+    //obsługa wykreslenia produktu z listy
     const handleBoughtItem = (indx) => {
         let hideBought = itemsFromForm.map((product, index) => {
             if (index === indx) product.bought = !product.bought;
@@ -27,10 +27,12 @@ function ItemShopingList(props) {
         })
         setItems(hideBought)
     }
-    const handleRemovetBoughtItem = (indx) => {
+    //obsługa przycisku usuwajacego produkt z listy
+    const handleRemovetItemFromList = (indx) => {
         let removeItem = itemsFromForm.filter((product, index) => index !== indx)
         setItems(removeItem)
     }
+
     const handleRemovetAllBoughtItem = () => {
         let removeAllBoughtItem = itemsFromForm.filter(product => !product.bought)
         setItems(removeAllBoughtItem)
@@ -81,7 +83,7 @@ function ItemShopingList(props) {
                                 {item.text}
 
                             </p>
-                            <span className="list_delete-icon" onClick={() => handleRemovetBoughtItem(indx)}  >   x</span>
+                            <span className="list_delete-icon" onClick={() => handleRemovetItemFromList(indx)}  >   x</span>
 
                         </li>
                     )
