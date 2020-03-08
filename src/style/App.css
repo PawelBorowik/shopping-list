@@ -54,6 +54,26 @@ span{
   text-decoration: line-through;
 
 }
-.delete-all{
+.delete-all-bought{
   cursor: pointer;
+  background-color:green;
 }
+.clear{
+  cursor: pointer;
+  background-color: yellow;
+}
+
+.abc{
+  background-color:red;
+  display:none;
+}
+
+.show-warning{ 
+  display:block;
+ 
+
+}
+.hide-warning{
+ 
+  display: none;
+}  

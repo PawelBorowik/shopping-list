@@ -6,6 +6,8 @@ import '../style/App.css';
 function ItemShopingList(props) {
 
     const [itemsFromForm, setItems] = useState([])
+    const [warning, setWarning] = useState(false)
+
 
 
     // itm odnosi się do itemsFromForm ze state - zeby odwolać się do zmiennej poza useEffects, która moze być niedostepna
@@ -17,9 +19,7 @@ function ItemShopingList(props) {
         }
     }, [props.newItem])
 
-    useEffect(() => {
 
-    })
     const handleBoughtItem = (indx) => {
         let hideBought = itemsFromForm.map((product, index) => {
             if (index === indx) product.bought = !product.bought;
@@ -35,41 +35,42 @@ function ItemShopingList(props) {
         let removeAllBoughtItem = itemsFromForm.filter(product => !product.bought)
         setItems(removeAllBoughtItem)
     }
-    // const alert=
 
-    //         <div>
-    //             czy na pewno?
-    //         <button onClick={() => handleClearList()}>tak</button>
-    //             <button>nie</button>
-    //         </div>
-
-    // const alertRemoveAllItems = () => {
-    //     console.log("ok")
-
-
-
-    // }
-    const handleClearList = () => {
-
-
-        setItems([])
+    const handleWarning = () => {
+        setWarning(!warning)
     }
+
+    const handleClearList = () => {
+        console.log("klikkk")
+        setItems([])
+        handleWarning()
+    }
+
+
 
 
     return (
         <div className="App">
             Lista zakupów
-            <div className="delete-all"
-                onClick={() => handleRemovetAllBoughtItem()}
+            <div className="delete-all-bought"
+                onClick={() => handleRemovetAllBoughtItem()}>
 
-            >usun wszystkie kupione
+                usun wszystkie kupione
             </div>
 
-            <div className="clear-list"
-                onClick={() => handleClearList()}
-            >Wyczyśc liste zakupów
-            {alert}
+            <div className={`clear`}
+                onClick={() => handleWarning()}>
+                Wyczyśc liste zakupów
             </div>
+
+            <div className={`abc ${warning ? "show-warning" : ""} `}>
+                czy na pewno?
+                <button onClick={() => handleClearList()}>tak</button>
+                <button onClick={() => handleWarning()} >nie</button>
+            </div>
+
+
+
             <ul>
                 {itemsFromForm.map((item, indx) => {
                     return (
@@ -86,7 +87,7 @@ function ItemShopingList(props) {
                     )
                 })}
             </ul>
-        </div>
+        </div >
     );
 }
 
