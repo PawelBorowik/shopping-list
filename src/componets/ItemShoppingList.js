@@ -32,15 +32,20 @@ function ItemShopingList(props) {
         let removeItem = itemsFromForm.filter((product, index) => index !== indx)
         setItems(removeItem)
     }
+    //obsluga przycisku usuwającego wszystkie kupione/wykreslone z listy produkty
 
     const handleRemovetAllBoughtItem = () => {
         let removeAllBoughtItem = itemsFromForm.filter(product => !product.bought)
         setItems(removeAllBoughtItem)
     }
 
+    // funkcja wyswietlająca ostrzezenie przed usuniecem wszystkich elementów z listy
+
     const handleWarning = () => {
         setWarning(!warning)
     }
+
+    //usuwanie listy zakupów
 
     const handleClearList = () => {
         console.log("klikkk")
