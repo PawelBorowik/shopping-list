@@ -7,6 +7,7 @@ function ItemShopingList(props) {
 
     const [itemsFromForm, setItems] = useState([])
     const [warning, setWarning] = useState(false)
+    const [selectItems, setSelectItems] = useState("all")
 
 
 
@@ -48,10 +49,92 @@ function ItemShopingList(props) {
     //usuwanie listy zakupów
 
     const handleClearList = () => {
-        console.log("klikkk")
+
         setItems([])
         handleWarning()
     }
+    // wybór przycisku okreslajacego rodzaj zakupw
+    const handleKindOfProduct = options => {
+        setSelectItems(options)
+
+    }
+    // const A = <li key={indx}>
+    //     <p className={`list_item ${item.checkbox ? "important" : ""} ${item.bought ? "bought" : ""}`}
+    //         onClick={() => handleBoughtItem(indx)}
+    //     >
+    //         {item.text}
+
+    //     </p>
+    //     <span className="list_delete-icon" onClick={() => handleRemovetItemFromList(indx)}  >   x</span>
+
+    // </li>
+
+
+
+
+
+
+    const showShopingList = () => {
+
+        let shopingList = [...itemsFromForm]
+
+        switch (selectItems) {
+            case "all":
+
+
+                return (
+                    shopingList.map((item, indx) => {
+                        return (
+                            <li key={indx}>
+                                <p className={`list_item ${item.checkbox ? "important" : ""} ${item.bought ? "bought" : ""}`}
+                                    onClick={() => handleBoughtItem(indx)}
+                                >
+                                    {item.text}
+
+                                </p>
+                                <span className="list_delete-icon" onClick={() => handleRemovetItemFromList(indx)}  >   x</span>
+
+                            </li>
+                        )
+                    })
+
+                )
+            case "food":
+                shopingList = shopingList.filter(itemsSelect => itemsSelect.selectItem === "food")
+                return (
+                    shopingList.map((item, indx) => {
+                        return (
+                            <li key={indx}>
+                                <p className={`list_item ${item.checkbox ? "important" : ""} ${item.bought ? "bought" : ""}`}
+                                    onClick={() => handleBoughtItem(indx)}
+                                >
+                                    {item.text}
+
+                                </p>
+                                <span className="list_delete-icon" onClick={() => handleRemovetItemFromList(indx)}  >   x</span>
+
+                            </li>
+                        )
+                    })
+
+                )
+            // case "tools":
+            //     shopingList = shopingList.filter(itemsSelect => itemsSelect.selectItem === "food")
+            //     return shopingList.map((item, indx) => <A key={indx} indx={indx} item={item} />)
+
+
+            default:
+                return "jeszcze nie"
+
+        }
+
+    }
+
+
+
+
+
+
 
 
 
@@ -76,23 +159,20 @@ function ItemShopingList(props) {
                 <button onClick={() => handleWarning()} >nie</button>
             </div>
 
+            <div className="list_select-kind">
+
+                <button onClick={() => handleKindOfProduct("all")}  >wszystkie</button>
+                <button onClick={() => handleKindOfProduct("food")}  >spozywcze</button>
+                <button onClick={() => handleKindOfProduct("clothes")} >odziez</button>
+                <button onClick={() => handleKindOfProduct("clean")}  >art chemichne</button>
+                <button onClick={() => handleKindOfProduct("tools")}  >sprzet domowy</button>
+                <button onClick={() => handleKindOfProduct("other")}  >inne</button>
+            </div>
+
 
 
             <ul>
-                {itemsFromForm.map((item, indx) => {
-                    return (
-                        <li key={indx}>
-                            <p className={`list_item ${item.checkbox ? "important" : ""} ${item.bought ? "bought" : ""}`}
-                                onClick={() => handleBoughtItem(indx)}
-                            >
-                                {item.text}
-
-                            </p>
-                            <span className="list_delete-icon" onClick={() => handleRemovetItemFromList(indx)}  >   x</span>
-
-                        </li>
-                    )
-                })}
+                {showShopingList()}
             </ul>
         </div >
     );
