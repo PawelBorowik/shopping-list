@@ -5,7 +5,7 @@ function AddItem(props) {
 
     const [text, setText] = useState()
     const [checkbox, setCheckbox] = useState(false)
-    const [selectItem, setSelectItem] = useState(null)
+    const [selectItem, setSelectItem] = useState("empty")
     const [bought, setBought] = useState(false)
     const [alert, setAlert] = useState("")
     const handleChangeText = (e) => {
@@ -20,8 +20,13 @@ function AddItem(props) {
     }
     const AddNewItem = () => {
         if (!text) {
-            setAlert("dodaj produkt!")
+            setAlert("podaj nazwę")
         }
+        else if (selectItem === "empty") {
+            setAlert("podaj rodzaj")
+
+        }
+
         else {
             let newItem = { text, checkbox, bought, selectItem }
 
@@ -47,7 +52,7 @@ function AddItem(props) {
             <label for="kind">wybierz kategorię:</label>
 
             <select onChange={handleChangeSelect} id="kind">
-                <option selected="selected"></option>
+                <option value="empty" selected="selected"></option>
                 <option value="food">spozywcze</option>
                 <option value="clothes">odziez</option>
                 <option value="clean">art. chemiczne</option>
