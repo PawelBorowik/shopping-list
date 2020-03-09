@@ -5,7 +5,7 @@ function AddItem(props) {
 
     const [text, setText] = useState()
     const [checkbox, setCheckbox] = useState(false)
-    const [selectItem, setSelectItem] = useState("")
+    const [selectItem, setSelectItem] = useState(null)
     const [bought, setBought] = useState(false)
     const [alert, setAlert] = useState("")
     const handleChangeText = (e) => {
@@ -15,7 +15,7 @@ function AddItem(props) {
         setCheckbox(e.target.checked)
     }
     const handleChangeSelect = (e) => {
-        console.log(e)
+
         setSelectItem(e.target.value)
     }
     const AddNewItem = () => {
@@ -27,7 +27,7 @@ function AddItem(props) {
 
             setText("")
             setCheckbox(false)
-            setSelectItem("")
+            setSelectItem("empty")
             setBought(false)
             setAlert("")
             props.add(newItem)
@@ -38,7 +38,7 @@ function AddItem(props) {
 
 
     return (
-        <div className="form">
+        <form className="form">
             <input type="text" placeholder="dodaj zakupy" value={text} onChange={handleChangeText} />
             <p>{alert}</p>
             <input type="checkbox" id="importance" checked={checkbox} onChange={handleCheckbox} />
@@ -47,7 +47,7 @@ function AddItem(props) {
             <label for="kind">wybierz kategorię:</label>
 
             <select onChange={handleChangeSelect} id="kind">
-                <option value="empty"></option>
+                <option selected="selected"></option>
                 <option value="food">spozywcze</option>
                 <option value="clothes">odziez</option>
                 <option value="clean">art. chemiczne</option>
@@ -56,8 +56,9 @@ function AddItem(props) {
 
 
             </select>
-            <button onClick={() => AddNewItem()}>Dodaj do listy zakupów</button>
-        </div>
+
+            <input type="reset" value="Dodaj do listy zakupów" onClick={() => AddNewItem()} />
+        </form>
     );
 }
 
