@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import Item from './Item'
+import Item from './Item'
 
 import '../style/App.css';
 
@@ -8,8 +8,6 @@ function ItemShopingList(props) {
     const [itemsFromForm, setItems] = useState([])
     const [warning, setWarning] = useState(false)
     const [selectItems, setSelectItems] = useState("all")
-
-
 
     // itm odnosi się do itemsFromForm ze state - zeby odwolać się do zmiennej poza useEffects, która moze być niedostepna
 
@@ -21,21 +19,22 @@ function ItemShopingList(props) {
     }, [props.newItem])
 
     //obsługa wykreslenia produktu z listy
-    const handleBoughtItem = (indx) => {
-        let hideBought = itemsFromForm.map((product, index) => {
-            if (index === indx) product.bought = !product.bought;
+    const handleBoughtItem = (id) => {
+        let hideBought = itemsFromForm.map(product => {
+            if (product.id === id) product.bought = !product.bought;
             return product
         })
         setItems(hideBought)
     }
     //obsługa przycisku usuwajacego produkt z listy
-    const handleRemovetItemFromList = (indx) => {
-        let removeItem = itemsFromForm.filter((product, index) => index !== indx)
+    const handleRemovetItemFromList = (id) => {
+        let removeItem = itemsFromForm.filter((product) => product.id !== id)
         setItems(removeItem)
     }
     //obsluga przycisku usuwającego wszystkie kupione/wykreslone z listy produkty
 
     const handleRemovetAllBoughtItem = () => {
+
         let removeAllBoughtItem = itemsFromForm.filter(product => !product.bought)
         setItems(removeAllBoughtItem)
     }
@@ -58,86 +57,53 @@ function ItemShopingList(props) {
         setSelectItems(options)
 
     }
-    // const A = <li key={indx}>
-    //     <p className={`list_item ${item.checkbox ? "important" : ""} ${item.bought ? "bought" : ""}`}
-    //         onClick={() => handleBoughtItem(indx)}
-    //     >
-    //         {item.text}
-
-    //     </p>
-    //     <span className="list_delete-icon" onClick={() => handleRemovetItemFromList(indx)}  >   x</span>
-
-    // </li>
-
-
-
-
-
-
     const showShopingList = () => {
 
         let shopingList = [...itemsFromForm]
 
+
         switch (selectItems) {
             case "all":
-
-
-                return (
-                    shopingList.map((item, indx) => {
-                        return (
-                            <li key={indx}>
-                                <p className={`list_item ${item.checkbox ? "important" : ""} ${item.bought ? "bought" : ""}`}
-                                    onClick={() => handleBoughtItem(indx)}
-                                >
-                                    {item.text}
-
-                                </p>
-                                <span className="list_delete-icon" onClick={() => handleRemovetItemFromList(indx)}  >   x</span>
-
-                            </li>
-                        )
-                    })
-
-                )
+                return shopingList.map(item => <Item
+                    key={item.id} item={item}
+                    handleBoughtItem={handleBoughtItem}
+                    handleRemovetItemFromList={handleRemovetItemFromList} />)
             case "food":
                 shopingList = shopingList.filter(itemsSelect => itemsSelect.selectItem === "food")
-                return (
-                    shopingList.map((item, indx) => {
-                        return (
-                            <li key={indx}>
-                                <p className={`list_item ${item.checkbox ? "important" : ""} ${item.bought ? "bought" : ""}`}
-                                    onClick={() => handleBoughtItem(indx)}
-                                >
-                                    {item.text}
-
-                                </p>
-                                <span className="list_delete-icon" onClick={() => handleRemovetItemFromList(indx)}  >   x</span>
-
-                            </li>
-                        )
-                    })
-
-                )
-            // case "tools":
-            //     shopingList = shopingList.filter(itemsSelect => itemsSelect.selectItem === "food")
-            //     return shopingList.map((item, indx) => <A key={indx} indx={indx} item={item} />)
-
-
+                return shopingList.map(item => <Item
+                    key={item.id} item={item}
+                    handleBoughtItem={handleBoughtItem}
+                    handleRemovetItemFromList={handleRemovetItemFromList} />)
+            case "clothes":
+                shopingList = shopingList.filter(itemsSelect => itemsSelect.selectItem === "clothes")
+                return shopingList.map(item => <Item
+                    key={item.id} item={item}
+                    handleBoughtItem={handleBoughtItem}
+                    handleRemovetItemFromList={handleRemovetItemFromList} />)
+            case "clean":
+                shopingList = shopingList.filter(itemsSelect => itemsSelect.selectItem === "clean")
+                return shopingList.map(item => <Item
+                    key={item.id} item={item}
+                    handleBoughtItem={handleBoughtItem}
+                    handleRemovetItemFromList={handleRemovetItemFromList} />)
+            case "tools":
+                shopingList = shopingList.filter(itemsSelect => itemsSelect.selectItem === "tools")
+                return shopingList.map(item => <Item
+                    key={item.id} item={item}
+                    handleBoughtItem={handleBoughtItem}
+                    handleRemovetItemFromList={handleRemovetItemFromList} />)
+            case "other":
+                shopingList = shopingList.filter(itemsSelect => itemsSelect.selectItem === "other")
+                return shopingList.map(item => <Item
+                    key={item.id} item={item}
+                    handleBoughtItem={handleBoughtItem}
+                    handleRemovetItemFromList={handleRemovetItemFromList} />)
             default:
                 return "jeszcze nie"
 
         }
 
     }
-
-
-
-
-
-
-
-
-
 
     return (
         <div className="list">
