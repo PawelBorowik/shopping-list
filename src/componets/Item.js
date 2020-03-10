@@ -2,14 +2,19 @@ import React from 'react';
 
 
 
-function Item() {
+function Item(props) {
 
 
     return (
-        <div>
-            czekolada
+        <li key={props.item.id}>
+            <p className={`list_item ${props.item.checkbox ? "important" : ""} ${props.item.bought ? "bought" : ""}`}
+                onClick={() => props.handleBoughtItem(props.item.id)}>
+                {props.item.text}
 
-        </div>
+            </p>
+            <span className="list_delete-icon" onClick={() => props.handleRemovetItemFromList(props.item.id)}  >   x</span>
+
+        </li>
     );
 }
 
