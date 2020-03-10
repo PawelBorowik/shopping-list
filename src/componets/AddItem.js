@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 
 function AddItem(props) {
+    const [id, setId] = useState(0)
 
     const [text, setText] = useState()
     const [checkbox, setCheckbox] = useState(false)
@@ -18,17 +19,18 @@ function AddItem(props) {
 
         setSelectItem(e.target.value)
     }
+
+
     const AddNewItem = () => {
+
         if (!text) {
             setAlert("podaj nazwę")
         }
         else if (selectItem === "empty") {
             setAlert("podaj rodzaj")
-
         }
-
         else {
-            let newItem = { text, checkbox, bought, selectItem }
+            let newItem = { id, text, checkbox, bought, selectItem }
 
             setText("")
             setCheckbox(false)
@@ -37,9 +39,10 @@ function AddItem(props) {
             setAlert("")
             props.add(newItem)
         }
+        let counter = id
+        console.log(counter)
+        setId(++counter)
     }
-
-
 
 
     return (
@@ -48,9 +51,7 @@ function AddItem(props) {
             <p>{alert}</p>
             <input type="checkbox" id="importance" checked={checkbox} onChange={handleCheckbox} />
             <label htmlFor="importance">wazny zakup</label>
-
             <label for="kind">wybierz kategorię:</label>
-
             <select onChange={handleChangeSelect} id="kind">
                 <option value="empty" selected="selected"></option>
                 <option value="food">spozywcze</option>
@@ -58,10 +59,7 @@ function AddItem(props) {
                 <option value="clean">art. chemiczne</option>
                 <option value="tools">sprzęt domowy</option>
                 <option value="other">inne</option>
-
-
             </select>
-
             <input type="reset" value="Dodaj do listy zakupów" onClick={() => AddNewItem()} />
         </form>
     );
