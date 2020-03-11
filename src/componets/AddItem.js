@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 
 function AddItem(props) {
     const [id, setId] = useState(0)
-
     const [text, setText] = useState()
     const [checkbox, setCheckbox] = useState(false)
     const [selectItem, setSelectItem] = useState("empty")
@@ -40,7 +39,6 @@ function AddItem(props) {
             props.add(newItem)
         }
         let counter = id
-        console.log(counter)
         setId(++counter)
     }
 

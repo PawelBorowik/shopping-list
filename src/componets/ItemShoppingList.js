@@ -47,7 +47,6 @@ function ItemShopingList(props) {
     //usuwanie listy zakupów
 
     const handleClearList = () => {
-
         setItems([])
         handleWarning()
     }
@@ -59,7 +58,6 @@ function ItemShopingList(props) {
     const showShopingList = () => {
 
         let shopingList = [...itemsFromForm]
-
 
         switch (selectItems) {
             case "all":
