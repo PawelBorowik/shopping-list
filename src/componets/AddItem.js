@@ -44,22 +44,39 @@ function AddItem(props) {
 
 
     return (
-        <form className="form">
-            <input type="text" placeholder="dodaj zakupy" value={text} onChange={handleChangeText} />
-            <p>{alert}</p>
-            <input type="checkbox" id="importance" checked={checkbox} onChange={handleCheckbox} />
-            <label htmlFor="importance">wazny zakup</label>
-            <label for="kind">wybierz kategorię:</label>
-            <select onChange={handleChangeSelect} id="kind">
-                <option value="empty" selected="selected"></option>
-                <option value="food">spozywcze</option>
-                <option value="clothes">odziez</option>
-                <option value="clean">art. chemiczne</option>
-                <option value="tools">sprzęt domowy</option>
-                <option value="other">inne</option>
-            </select>
-            <input type="reset" value="Dodaj do listy zakupów" onClick={() => AddNewItem()} />
-        </form>
+        <div className="add_form">
+            <form className="form">
+
+
+                <div class="form-field">
+                    <div class="form-field__control">
+                        <input id="product" type="text" class="form-field__input" placeholder=" "
+                            value={text} onChange={handleChangeText} />
+                        <label for="product" className="form-field__label">Dodaj zakupy</label>
+                        <div class="form-field__bar"></div>
+                    </div>
+                </div>
+
+                {/* <input className="form_text" type="text" placeholder="dodaj zakupy" value={text} onChange={handleChangeText} /> */}
+                <p>{alert}</p>
+                <div class="row">
+                    <input className="form_checkbox" type="checkbox" id="importance" checked={checkbox} onChange={handleCheckbox} />
+                    <label htmlFor="importance">wazny zakup</label>
+                </div>
+                <div class="row">
+                    <label for="kind">wybierz kategorię:</label>
+                    <select className="form_select" onChange={handleChangeSelect} id="kind">
+                        <option value="empty" selected="selected"></option>
+                        <option value="food">spozywcze</option>
+                        <option value="clothes">odziez</option>
+                        <option value="clean">art. chemiczne</option>
+                        <option value="tools">sprzęt domowy</option>
+                        <option value="other">inne</option>
+                    </select>
+                </div>
+                <input className="form_button" type="reset" value="Dodaj do listy zakupów" onClick={() => AddNewItem()} />
+            </form>
+        </div>
     );
 }
 

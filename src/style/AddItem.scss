@@ -1,0 +1,91 @@
+.add_form{
+    width: 100%;
+    height: 50vh;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    
+}
+.form-field {
+    display: block;
+    margin: 16px 40px;
+  }
+  .form-field__label {
+    @include label-active();
+    position: absolute;
+    display: block;
+    left: 0;
+    margin: 0;
+    top: 0;
+    padding: 18px 12px 0;
+    transition: all $animation-duration;
+    width: 100%;
+  }
+  .form-field__control {
+    background: #eee;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+  .form-field__bar {
+    position: absolute;
+    display: block;
+    border-bottom: 2px solid $primary-color;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    content: "";
+    margin: 0 auto;
+    transform: scaleX(0);
+    transition: all $animation-duration;
+    width: 1%;
+  }
+  .form-field__input,
+  .form-field__textarea {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #999;
+    color: #333;
+    display: block;
+    font-size: 1.2rem;
+    margin-top: 24px;
+    outline: 0;
+    padding: 0 12px 10px 12px;
+    width: 100%;
+    &:placeholder-shown {
+        ~ .form-field__label {
+          @include label-inactive();
+        }
+      }
+      &:focus {
+        ~ .form-field__label {
+          color: $primary-color;
+          @include label-active();
+        }
+        ~ .form-field__bar {
+          border-bottom: 2px solid $primary-color;
+          transform: scaleX(150);
+        }
+      }
+    }
+    .form-field__textarea {
+      height: 150px;
+    }
+    .form_button{
+        width:80%;
+        padding: 10px;
+        font-size: 1.2rem;
+        margin: 10px auto;
+        background-color: #eee;
+        border:1px solid #999;
+        border-radius: 8px;
+    }
+        
+    
+    .form_button:hover{
+        color:$primary-color;
+        border:1px solid $primary-color;
+    }

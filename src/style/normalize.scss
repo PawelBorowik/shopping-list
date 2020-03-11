@@ -4,3 +4,15 @@ body {
        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
        sans-serif;
    }
+   $primary-color: #b11adc;
+   $animation-duration: 0.4;
+
+   @mixin label-inactive() {
+    font-size: 1.2rem;
+    transform: translateY(0);
+  }
+  
+  @mixin label-active() {
+    font-size: 0.75rem;
+    transform: translateY(-14px);
+  }
