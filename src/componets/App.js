@@ -3,7 +3,7 @@ import AddItem from './AddItem'
 import ShoppingList from './ItemShoppingList'
 
 
-import '../style/App.css';
+
 
 function App() {
 
