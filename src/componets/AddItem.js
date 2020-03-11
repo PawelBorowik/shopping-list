@@ -64,9 +64,9 @@ function AddItem(props) {
                     <label htmlFor="importance">wazny zakup</label>
                 </div>
                 <div class="row">
-                    <label for="kind">wybierz kategorię:</label>
+
                     <select className="form_select" onChange={handleChangeSelect} id="kind">
-                        <option value="empty" selected="selected"></option>
+                        <option value="empty" selected="selected" >wybierz kategorię</option>
                         <option value="food">spozywcze</option>
                         <option value="clothes">odziez</option>
                         <option value="clean">art. chemiczne</option>
