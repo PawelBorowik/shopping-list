@@ -1,13 +1,28 @@
 import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
+const useStyles = makeStyles(theme => ({
+    root: {
+        '& > *': {
+            margin: theme.spacing(1),
+            width: 200,
+        },
+    },
+}));
 
 
 function AddItem(props) {
+
+    const classes = useStyles();
+
     const [id, setId] = useState(0)
     const [text, setText] = useState()
     const [checkbox, setCheckbox] = useState(false)
     const [selectItem, setSelectItem] = useState("empty")
     const [bought, setBought] = useState(false)
     const [alert, setAlert] = useState("")
+
     const handleChangeText = (e) => {
         setText(e.target.value)
     }
@@ -15,18 +30,14 @@ function AddItem(props) {
         setCheckbox(e.target.checked)
     }
     const handleChangeSelect = (e) => {
-
         setSelectItem(e.target.value)
     }
-
-
     const AddNewItem = () => {
-
         if (!text) {
             setAlert("podaj nazwę")
         }
         else if (selectItem === "empty") {
-            setAlert("podaj rodzaj")
+            setAlert("wybierz z listy kategorię produktu")
         }
         else {
             let newItem = { id, text, checkbox, bought, selectItem }
@@ -45,37 +56,34 @@ function AddItem(props) {
 
     return (
         <div className="add_form">
-            <form className="form">
+            <div className="form">
+                <form className={classes.root} noValidate autoComplete="off">
+
+                    <TextField id="outlined-basic" label="Dodaj produkt" variant="outlined" value={text} onChange={handleChangeText} />
+                </form>
 
 
-                <div class="form-field">
-                    <div class="form-field__control">
-                        <input id="product" type="text" class="form-field__input" placeholder=" "
-                            value={text} onChange={handleChangeText} />
-                        <label for="product" className="form-field__label">Dodaj zakupy</label>
-                        <div class="form-field__bar"></div>
-                    </div>
-                </div>
-
-                {/* <input className="form_text" type="text" placeholder="dodaj zakupy" value={text} onChange={handleChangeText} /> */}
                 <p>{alert}</p>
-                <div class="row">
+                <div className="form_important">
                     <input className="form_checkbox" type="checkbox" id="importance" checked={checkbox} onChange={handleCheckbox} />
                     <label htmlFor="importance">wazny zakup</label>
                 </div>
-                <div class="row">
+                <div className="form_kind">
 
                     <select className="form_select" onChange={handleChangeSelect} id="kind">
-                        <option value="empty" selected="selected" >wybierz kategorię</option>
-                        <option value="food">spozywcze</option>
+                        <option value="empty" defaultValue="selected" >wybierz rodzaj</option>
+                        <option id="food" value="food">spozywcze</option>
                         <option value="clothes">odziez</option>
                         <option value="clean">art. chemiczne</option>
                         <option value="tools">sprzęt domowy</option>
                         <option value="other">inne</option>
                     </select>
                 </div>
-                <input className="form_button" type="reset" value="Dodaj do listy zakupów" onClick={() => AddNewItem()} />
-            </form>
+                <div className="form_button-area">
+                    <input className="form_button" type="reset" value="Dodaj do listy zakupów"
+                        onClick={() => AddNewItem()} />
+                </div>
+            </div>
         </div>
     );
 }
