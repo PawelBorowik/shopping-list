@@ -1,27 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Checkbox from '@material-ui/core/Checkbox'
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-// import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 const useStyles = makeStyles(theme => ({
-
-    textField: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        width: 200,
+    root: {
+        '& > *': {
+            margin: theme.spacing(1),
+            width: 300,
+        },
     },
     formControl: {
         margin: theme.spacing(1),
-        minWidth: 200,
+        minWidth: 300,
+
     },
     selectEmpty: {
         marginTop: theme.spacing(2),
     },
+
+
 }));
 
 function AddItem(props) {
@@ -33,10 +37,10 @@ function AddItem(props) {
     const [checkbox, setCheckbox] = useState(false)
     const [selectItem, setSelectItem] = useState("empty")
     const [bought, setBought] = useState(false)
-    const [alert, setAlert] = useState("")
+    const [alert, setAlert] = useState(false)
 
-    const inputLabel = React.useRef(null);
-    const [labelWidth, setLabelWidth] = React.useState(0);
+    const inputLabel = useRef(null);
+    const [labelWidth, setLabelWidth] = useState(0);
     useEffect(() => {
         setLabelWidth(inputLabel.current.offsetWidth);
     }, []);
@@ -51,11 +55,8 @@ function AddItem(props) {
         setSelectItem(e.target.value)
     }
     const AddNewItem = () => {
-        if (!text) {
-            setAlert("podaj nazwę")
-        }
-        else if (selectItem === "empty") {
-            setAlert("wybierz z listy kategorię produktu")
+        if (!text || selectItem === "empty") {
+            setAlert("pole musu być uzupełnione")
         }
         else {
             let newItem = { id, text, checkbox, bought, selectItem }
@@ -72,25 +73,41 @@ function AddItem(props) {
     }
 
 
+
+
     return (
-        <div className="add_form">
-            <div className="form">
-                <form className={classes.root} noValidate autoComplete="off">
 
-                    <TextField id="outlined-basic" label="Dodaj produkt"
-                        variant="outlined" value={text} onChange={handleChangeText} />
-                </form>
+        <div className="conteiner-form">
+            <form className="form" action="">
+                <div className="form_input">
+                    <div className={classes.root} noValidate autoComplete="off">
+                        <TextField id="outlined-basic" label="Dodaj produkt"
+                            variant="outlined" value={text} onChange={handleChangeText}
+                            error={!text && alert} helperText={!text ? alert : null} />
 
-
-                <p>{alert}</p>
-                <div className="form_important">
-                    <input className="form_checkbox" type="checkbox" id="importance" checked={checkbox} onChange={handleCheckbox} />
-                    <label htmlFor="importance">wazny zakup</label>
+                    </div>
                 </div>
+
+
+                <div className="form_important">
+
+                    <FormControl component="fieldset">
+
+                        <FormControlLabel
+                            value="end"
+                            control={<Checkbox color="primary" />}
+                            label="Zaznacz jako pilny zakpu "
+                            labelPlacement="end"
+                            checked={checkbox}
+                            onChange={handleCheckbox}
+                        />
+                    </FormControl>
+                </div>
+
                 <div className="form_kind">
-                    <FormControl variant="outlined" className={classes.formControl}>
+                    <FormControl variant="outlined" className={classes.formControl} error={selectItem === "empty" && alert}>
                         <InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">
-                            Wybierz produkt
+                            Wybierz kategorię produktu
                         </InputLabel>
                         <Select
                             labelId="demo-simple-select-outlined-label"
@@ -99,36 +116,23 @@ function AddItem(props) {
                             onChange={handleChangeSelect}
                             labelWidth={labelWidth}
                         >
-                            <MenuItem value="empty">
-
-                            </MenuItem>
+                            <MenuItem value="empty"></MenuItem>
                             <MenuItem value={"food"}>spożywcze</MenuItem>
                             <MenuItem value={"clothes"}>odzież</MenuItem>
                             <MenuItem value={"clean"}>art. chemiczne</MenuItem>
                             <MenuItem value={"tools"}>sprzęt domowy</MenuItem>
                             <MenuItem value={"other"}>inne</MenuItem>
-
-
                         </Select>
+                        <FormHelperText >{selectItem === "empty" ? alert : null}</FormHelperText>
                     </FormControl>
-
-
-
-                    {/* <select className="form_select" onChange={handleChangeSelect} id="kind">
-                        <option value="empty" defaultValue="selected" >wybierz rodzaj</option>
-                        <option id="food" value="food">spozywcze</option>
-                        <option value="clothes">odziez</option>
-                        <option value="clean">art. chemiczne</option>
-                        <option value="tools">sprzęt domowy</option>
-                        <option value="other">inne</option>
-                    </select> */}
                 </div>
                 <div className="form_button-area">
                     <input className="form_button" type="reset" value="Dodaj do listy zakupów"
                         onClick={() => AddNewItem()} />
                 </div>
-            </div>
+            </form>
         </div>
+
     );
 }
 
