@@ -8,9 +8,11 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
     root: {
+
         '& > *': {
             margin: theme.spacing(1),
             width: 300,
@@ -127,8 +129,9 @@ function AddItem(props) {
                     </FormControl>
                 </div>
                 <div className="form_button-area">
-                    <input className="form_button" type="reset" value="Dodaj do listy zakupów"
-                        onClick={() => AddNewItem()} />
+                    <Button variant="contained" color="primary"
+                        onClick={() => AddNewItem()}>Dodaj do listy zakupów</Button>
+
                 </div>
             </form>
         </div>
