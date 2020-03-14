@@ -1,0 +1,50 @@
+table, th, td {
+    margin: auto;
+    width: 70%;
+    border: 1px solid black;
+  }
+
+
+  .list_item{
+    text-align:left ;
+    
+    cursor: pointer;
+    padding:5px 20px 5px 5px;
+  }
+
+  .important{
+    color: $primary-color;
+  }
+
+  .list_delete-icon{
+    font-size: 20px;
+    // padding:20px;
+    cursor: pointer;
+  }
+
+  .bought{
+    color:gray;
+    text-decoration: line-through;
+  }
+
+  .list_delete-all-bought{
+    cursor: pointer;
+    background-color:green;
+  }
+  
+
+
+  .list_clear{
+    cursor: pointer;
+    background-color: yellow;
+  }
+  
+  .list_warning{
+    background-color:red;
+    display:none;
+  }
+
+  .show--warning{ 
+    display:block;
+  }
+  
