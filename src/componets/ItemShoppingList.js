@@ -105,10 +105,12 @@ function ItemShopingList(props) {
         }
 
     }
+    const numberFood = itemsFromForm.filter(item => item.selectItem === "food")
+    const numberClothes = itemsFromForm.filter(item => item.selectItem === "clothes")
 
     return (
         <div className="list">
-            Lista zakupów
+
             <div className="list_delete-all-bought"
                 onClick={() => handleRemovetAllBoughtItem()}>
 
@@ -131,7 +133,7 @@ function ItemShopingList(props) {
                 <div className="list_folder-all" onClick={() => handleKindOfProduct("all")}>
                     <div className={`button all ${selectItems === "all" ? "active" : null}`}>wszystkie</div>
                     <ul className={`list_table all-list ${selectItems === "all" ? "active" : null}`}>
-                        wszystkie
+                        wszystkie ({itemsFromForm.length})
 
                         {showShopingList("all")}
                     </ul>
@@ -139,7 +141,7 @@ function ItemShopingList(props) {
                 <div className="list_folder-food" onClick={() => handleKindOfProduct("food")} >
                     <div className={`button food ${selectItems === "food" ? "active" : null}`}>spożywcze</div>
                     <ul className={`list_table food-list ${selectItems === "food" ? "active" : null}`}>
-                        spozywcze
+                        spozywcze ({numberFood.length})
 
                         {showShopingList("food")}
                     </ul>
@@ -147,7 +149,7 @@ function ItemShopingList(props) {
                 <div className="list_folder-clothes" onClick={() => handleKindOfProduct("clothes")}>
                     <div className={`button clothes ${selectItems === "clothes" ? "active" : null}`}>odzież</div>
                     <ul className={`list_table clothes-list ${selectItems === "clothes" ? "active" : null}`}>
-                        odzież
+                        odzież ( {numberClothes.length})
 
                         {showShopingList("clothes")}
                     </ul>
