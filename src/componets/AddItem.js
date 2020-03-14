@@ -72,7 +72,7 @@ function AddItem(props) {
     }
     const AddNewItem = () => {
         if (!text || selectItem === "empty") {
-            setAlert("pole musu być uzupełnione")
+            setAlert("pole musi być uzupełnione")
         }
         else {
             let newItem = { id, text, checkbox, bought, selectItem }
@@ -146,7 +146,7 @@ function AddItem(props) {
                     </div>
                     <div className="form_button-area">
 
-                        <Button variant="contained" color="primary"
+                        <Button variant="outlined" color="primary"
                             onClick={() => AddNewItem()}>Dodaj do listy zakupów
                         </Button>
 
