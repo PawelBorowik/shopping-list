@@ -49,7 +49,10 @@ function AddItem(props) {
 
 
     const [id, setId] = useState(0)
-    const [text, setText] = useState()
+    const [text, setText] = useState("")
+    // przeróbka stringa na boolien na potrzeby error z inputa:
+    const noText = !text
+    const emptyInput = Boolean(noText)
     const [checkbox, setCheckbox] = useState(false)
     const [selectItem, setSelectItem] = useState("empty")
     const [bought, setBought] = useState(false)
@@ -72,8 +75,12 @@ function AddItem(props) {
     }
     const AddNewItem = () => {
         if (!text || selectItem === "empty") {
+
             setAlert("pole musi być uzupełnione")
+
         }
+
+
         else {
             let newItem = { id, text, checkbox, bought, selectItem }
 
@@ -101,7 +108,7 @@ function AddItem(props) {
                         <div className={classes.root} noValidate autoComplete="off" >
                             <TextField id="outlined-basic" label="Dodaj produkt"
                                 variant="outlined" value={text} onChange={handleChangeText}
-                                error={!text && alert} helperText={!text ? alert : null} />
+                                error={emptyInput && alert} helperText={!text ? alert : null} />
 
                         </div>
                     </div>
@@ -114,7 +121,7 @@ function AddItem(props) {
                             <FormControlLabel
                                 value="end"
                                 control={<Checkbox color="primary" />}
-                                label="Zaznacz jako pilny zakpu "
+                                label="Zaznacz jako pilny zakpup "
                                 labelPlacement="end"
                                 checked={checkbox}
                                 onChange={handleCheckbox}

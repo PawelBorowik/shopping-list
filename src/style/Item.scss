@@ -1,15 +1,27 @@
-table, th, td {
-    margin: auto;
-    width: 70%;
-    border: 1px solid black;
+
+
+  
+  .listli{
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+    // background-color: yellow;
+    
+  }
+ 
+  
+  .list_item{
+    font-size:  $font-size*1.8;
+    width: 100%;
+    padding:5px;
+    text-align: left;
+    // background-color: red;
   }
 
-
-  .list_item{
-    text-align:left ;
-    
-    cursor: pointer;
-    padding:5px 20px 5px 5px;
+  .list_basket{
+    // background-color: yellowgreen;
+    font-size:  $font-size*2;
+    padding: 5px 5px;
   }
 
   .important{
@@ -18,7 +30,8 @@ table, th, td {
 
   .list_delete-icon{
     font-size: 20px;
-    // padding:20px;
+    padding: 5px 10px;
+    // background-color:blue;
     cursor: pointer;
   }
 

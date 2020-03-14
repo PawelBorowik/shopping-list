@@ -1,0 +1,101 @@
+.list_select-kind{
+    position:relative;
+    min-height: 1000px;
+    
+    
+}
+.list_table  {
+    position: absolute;
+    width: 70%;
+    background-color: white;
+    border-top: 1px solid gray;
+}
+
+.active{
+    z-index:1;
+    background-color: #eee;
+}
+.all-list{
+        left:30%;
+        top:50px;
+        min-height: 1000px;
+        
+    
+  }
+.food-list{
+    left:30%;
+    top:100px;
+    min-height: 1000px;
+
+}
+.clothes-list{
+    left:30%;
+    top:150px;
+    min-height: 1000px;
+}
+.clean-list{
+    left:30%;
+    top:200px;
+    min-height: 1000px;
+}
+.tools-list{
+    left:30%;
+    top:250px;
+    min-height: 1000px;
+}
+.other-list{
+    left:30%;
+    right: 0;
+    top:300px;
+
+    min-height: 1000px;
+}
+  
+
+.button{
+    position:relative;
+    width: 30%;
+    height: 50px;
+    cursor: pointer;
+    border: 1px solid gray;
+    border-bottom: 0;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+     
+    
+    
+
+}
+
+
+.all{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.food{
+    position: absolute;
+    left: 0;
+    top: 50px;
+}
+
+.clothes{
+    position: absolute;
+    left: 0;
+    top: 100px;
+}
+.clean{
+    position: absolute;
+    left: 0;
+    top: 150px;
+}
+.tools{
+    position: absolute;
+    left: 0;
+    top: 200px;
+}
+.other{
+    position: absolute;
+    left: 0;
+    top: 250px;
+}

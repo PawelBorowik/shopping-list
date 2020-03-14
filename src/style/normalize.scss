@@ -8,12 +8,6 @@ body {
    $animation-duration: 0.4;
    $font-size:10px;
 
-   @mixin label-inactive() {
-    font-size: $font-size*2;
-    transform: translateY(0);
-  }
+ 
   
-  @mixin label-active() {
-    font-size:$font-size*1.5;
-    transform: translateY(-14px);
-  }
+  
