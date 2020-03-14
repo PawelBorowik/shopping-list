@@ -9,18 +9,31 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#b11adc'
+        }
+    },
+});
+
 
 const useStyles = makeStyles(theme => ({
     root: {
 
+
         '& > *': {
             margin: theme.spacing(1),
             width: 300,
+
         },
     },
     formControl: {
         margin: theme.spacing(1),
         minWidth: 300,
+
 
     },
     selectEmpty: {
@@ -33,6 +46,7 @@ const useStyles = makeStyles(theme => ({
 function AddItem(props) {
 
     const classes = useStyles();
+
 
     const [id, setId] = useState(0)
     const [text, setText] = useState()
@@ -79,62 +93,70 @@ function AddItem(props) {
 
     return (
 
+
         <div className="conteiner-form">
-            <form className="form" action="">
-                <div className="form_input">
-                    <div className={classes.root} noValidate autoComplete="off">
-                        <TextField id="outlined-basic" label="Dodaj produkt"
-                            variant="outlined" value={text} onChange={handleChangeText}
-                            error={!text && alert} helperText={!text ? alert : null} />
+            <MuiThemeProvider theme={theme}>
+                <form className="form" action="">
+                    <div className="form_input">
+                        <div className={classes.root} noValidate autoComplete="off" >
+                            <TextField id="outlined-basic" label="Dodaj produkt"
+                                variant="outlined" value={text} onChange={handleChangeText}
+                                error={!text && alert} helperText={!text ? alert : null} />
+
+                        </div>
+                    </div>
+
+
+                    <div className="form_important">
+
+                        <FormControl component="fieldset">
+
+                            <FormControlLabel
+                                value="end"
+                                control={<Checkbox color="primary" />}
+                                label="Zaznacz jako pilny zakpu "
+                                labelPlacement="end"
+                                checked={checkbox}
+                                onChange={handleCheckbox}
+                            />
+                        </FormControl>
+                    </div>
+
+                    <div className="form_kind">
+                        <FormControl variant="outlined" className={classes.formControl} error={selectItem === "empty" && alert}>
+                            <InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">
+                                Wybierz kategorię produktu
+                        </InputLabel>
+                            <Select
+                                labelId="demo-simple-select-outlined-label"
+                                id="demo-simple-select-outlined"
+                                value={selectItem}
+                                onChange={handleChangeSelect}
+                                labelWidth={labelWidth}
+                            >
+                                <MenuItem value="empty"></MenuItem>
+                                <MenuItem value={"food"}>spożywcze</MenuItem>
+                                <MenuItem value={"clothes"}>odzież</MenuItem>
+                                <MenuItem value={"clean"}>art. chemiczne</MenuItem>
+                                <MenuItem value={"tools"}>sprzęt domowy</MenuItem>
+                                <MenuItem value={"other"}>inne</MenuItem>
+                            </Select>
+                            <FormHelperText >{selectItem === "empty" ? alert : null}</FormHelperText>
+                        </FormControl>
+                    </div>
+                    <div className="form_button-area">
+
+                        <Button variant="contained" color="primary"
+                            onClick={() => AddNewItem()}>Dodaj do listy zakupów
+                        </Button>
+
 
                     </div>
-                </div>
-
-
-                <div className="form_important">
-
-                    <FormControl component="fieldset">
-
-                        <FormControlLabel
-                            value="end"
-                            control={<Checkbox color="primary" />}
-                            label="Zaznacz jako pilny zakpu "
-                            labelPlacement="end"
-                            checked={checkbox}
-                            onChange={handleCheckbox}
-                        />
-                    </FormControl>
-                </div>
-
-                <div className="form_kind">
-                    <FormControl variant="outlined" className={classes.formControl} error={selectItem === "empty" && alert}>
-                        <InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">
-                            Wybierz kategorię produktu
-                        </InputLabel>
-                        <Select
-                            labelId="demo-simple-select-outlined-label"
-                            id="demo-simple-select-outlined"
-                            value={selectItem}
-                            onChange={handleChangeSelect}
-                            labelWidth={labelWidth}
-                        >
-                            <MenuItem value="empty"></MenuItem>
-                            <MenuItem value={"food"}>spożywcze</MenuItem>
-                            <MenuItem value={"clothes"}>odzież</MenuItem>
-                            <MenuItem value={"clean"}>art. chemiczne</MenuItem>
-                            <MenuItem value={"tools"}>sprzęt domowy</MenuItem>
-                            <MenuItem value={"other"}>inne</MenuItem>
-                        </Select>
-                        <FormHelperText >{selectItem === "empty" ? alert : null}</FormHelperText>
-                    </FormControl>
-                </div>
-                <div className="form_button-area">
-                    <Button variant="contained" color="primary"
-                        onClick={() => AddNewItem()}>Dodaj do listy zakupów</Button>
-
-                </div>
-            </form>
+                </form>
+            </MuiThemeProvider>
         </div>
+
+
 
     );
 }
