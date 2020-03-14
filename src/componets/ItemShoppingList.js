@@ -134,9 +134,9 @@ function ItemShopingList(props) {
 
 
 
-            <ul>
+            <table>
                 {showShopingList()}
-            </ul>
+            </table>
         </div >
     );
 }
