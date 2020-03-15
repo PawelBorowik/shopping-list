@@ -119,7 +119,7 @@ function AddItem(props) {
                             <FormControlLabel
                                 value="end"
                                 control={<Checkbox color="primary" />}
-                                label="Zaznacz jako pilny zakpup "
+                                label="Zaznacz jako pilny zakup "
                                 labelPlacement="end"
                                 checked={checkbox}
                                 onChange={handleCheckbox}

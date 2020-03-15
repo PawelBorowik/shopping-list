@@ -61,7 +61,7 @@ function ItemShopingList(props) {
         setItems([])
         handleWarning()
     }
-    // wybór przycisku okreslajacego rodzaj zakupw
+    // select okreslajacy rodzaj zakupw
     const handleKindOfProduct = options => {
         setSelectItems(options)
 
@@ -115,6 +115,7 @@ function ItemShopingList(props) {
         }
 
     }
+    //liczniki ilości produktów na kartach
     const numberFood = itemsFromForm.filter(item => item.selectItem === "food")
     const numberClothes = itemsFromForm.filter(item => item.selectItem === "clothes")
     const numberClean = itemsFromForm.filter(item => item.selectItem === "clean")
@@ -141,13 +142,25 @@ function ItemShopingList(props) {
                     </div>
 
                 </div>
-            </MuiThemeProvider>
 
-            <div className={`list_warning ${warning ? "show--warning" : ""} `}>
-                czy na pewno?
-            <button onClick={() => handleClearList()}>tak</button>
-                <button onClick={() => handleWarning()} >nie</button>
-            </div>
+
+                <div className={`list_warning ${warning ? "show--warning" : ""} `}>
+                    <div className="dlaczegoflexniedziala">
+                        <p>Czy na pewno chcesz usunąć wszytkie produkty z listy?</p>
+
+                        <div className="list-button-warning-yes-no ">
+                            <Button variant="outlined" size="large" color="primary"
+                                onClick={() => handleClearList()}>tak
+                </Button>
+                        </div>
+                        <div className="list-button-warning-yes-no ">
+                            <Button variant="contained" size="large" color="primary"
+                                onClick={() => handleWarning()} >nie
+                 </Button>
+                        </div>
+                    </div>
+                </div>
+            </MuiThemeProvider>
 
             <div className="list_select-kind" >
 
@@ -162,7 +175,7 @@ function ItemShopingList(props) {
                 <div className="list_folder-food" onClick={() => handleKindOfProduct("food")} >
                     <div className={`button food ${selectItems === "food" ? "active" : null}`}>spożywcze</div>
                     <ul className={`list_table food-list ${selectItems === "food" ? "active" : null}`}>
-                        spozywcze ({numberFood.length})
+                        spożywcze ({numberFood.length})
 
                         {showShopingList("food")}
                     </ul>
@@ -179,15 +192,15 @@ function ItemShopingList(props) {
                     <div className={`button clean ${selectItems === "clean" ? "active" : null}`}>art. chemiczne</div>
                     <div>
                         <ul className={`list_table clean-list ${selectItems === "clean" ? "active" : null}`}>
-                            art chem ({numberClean.length})
+                            art. chemiczne ({numberClean.length})
                             {showShopingList("clean")}
                         </ul>
                     </div>
                 </div>
                 <div className="list_folder-tools" onClick={() => handleKindOfProduct("tools")}>
-                    <div className={`button tools ${selectItems === "tools" ? "active" : null}`} > sprzet domowy</div>
+                    <div className={`button tools ${selectItems === "tools" ? "active" : null}`} > sprzęt domowy</div>
                     <ul className={`list_table tools-list ${selectItems === "tools" ? "active" : null}`}>
-                        sprzet domowy ({numberTools.length})
+                        sprzęt domowy ({numberTools.length})
                         {showShopingList("tools")}
                     </ul>
                 </div>
