@@ -31,7 +31,7 @@
   .list_delete-icon{
     font-size: 20px;
     padding: 5px 10px;
-    // background-color:blue;
+    
     cursor: pointer;
   }
 
@@ -40,24 +40,5 @@
     text-decoration: line-through;
   }
 
-  .list_delete-all-bought{
-    cursor: pointer;
-    background-color:green;
-  }
-  
-
-
-  .list_clear{
-    cursor: pointer;
-    background-color: yellow;
-  }
-  
-  .list_warning{
-    background-color:red;
-    display:none;
-  }
-
-  .show--warning{ 
-    display:block;
-  }
+ 
   

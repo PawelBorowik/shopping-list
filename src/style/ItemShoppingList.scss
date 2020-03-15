@@ -1,3 +1,28 @@
+
+  
+.list_buttons{
+    display:flex;
+    margin: 5px;
+    // background-color: red;
+    .list_delete-all-bought{
+        margin-right: 5px;
+        
+      }
+     
+    
+}
+  
+  .list_warning{
+    background-color:red;
+    display:none;
+  }
+
+  .show--warning{ 
+    display:block;
+  }
+
+
+
 .list_select-kind{
     position:relative;
     min-height: 1000px;
@@ -41,14 +66,14 @@
 .tools-list{
     left:30%;
     top:250px;
-    min-height: 1000px;
+    min-height: 100px;
 }
 .other-list{
     left:30%;
     right: 0;
     top:300px;
 
-    min-height: 1000px;
+    
 }
   
 

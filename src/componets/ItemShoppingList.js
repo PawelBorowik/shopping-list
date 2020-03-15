@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Item from './Item'
+import Button from '@material-ui/core/Button';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#b11adc'
+        }
+    },
+});
 
 
 function ItemShopingList(props) {
@@ -107,24 +117,35 @@ function ItemShopingList(props) {
     }
     const numberFood = itemsFromForm.filter(item => item.selectItem === "food")
     const numberClothes = itemsFromForm.filter(item => item.selectItem === "clothes")
+    const numberClean = itemsFromForm.filter(item => item.selectItem === "clean")
+    const numberTools = itemsFromForm.filter(item => item.selectItem === "tools")
+    const numberOther = itemsFromForm.filter(item => item.selectItem === "other")
 
     return (
         <div className="list">
+            <MuiThemeProvider theme={theme}>
 
-            <div className="list_delete-all-bought"
-                onClick={() => handleRemovetAllBoughtItem()}>
+                <div className=" list_buttons">
+                    <div className="list_delete-all-bought">
+                        <Button variant="outlined" size="small" color="primary"
+                            className="list_delete-all-bought"
+                            onClick={() => handleRemovetAllBoughtItem()}>
+                            usuń wszystkie kupione
+                </Button>
+                    </div>
+                    <div className="list_clear">
+                        <Button variant="outlined" size="small" color="primary"
+                            onClick={() => handleWarning()}>
+                            Wyczyśc liste zakupów
+                </Button>
+                    </div>
 
-                usun wszystkie kupione
-            </div>
-
-            <div className="list_clear"
-                onClick={() => handleWarning()}>
-                Wyczyśc liste zakupów
-            </div>
+                </div>
+            </MuiThemeProvider>
 
             <div className={`list_warning ${warning ? "show--warning" : ""} `}>
                 czy na pewno?
-                <button onClick={() => handleClearList()}>tak</button>
+            <button onClick={() => handleClearList()}>tak</button>
                 <button onClick={() => handleWarning()} >nie</button>
             </div>
 
@@ -149,7 +170,7 @@ function ItemShopingList(props) {
                 <div className="list_folder-clothes" onClick={() => handleKindOfProduct("clothes")}>
                     <div className={`button clothes ${selectItems === "clothes" ? "active" : null}`}>odzież</div>
                     <ul className={`list_table clothes-list ${selectItems === "clothes" ? "active" : null}`}>
-                        odzież ( {numberClothes.length})
+                        odzież ({numberClothes.length})
 
                         {showShopingList("clothes")}
                     </ul>
@@ -158,7 +179,7 @@ function ItemShopingList(props) {
                     <div className={`button clean ${selectItems === "clean" ? "active" : null}`}>art. chemiczne</div>
                     <div>
                         <ul className={`list_table clean-list ${selectItems === "clean" ? "active" : null}`}>
-                            art chem
+                            art chem ({numberClean.length})
                             {showShopingList("clean")}
                         </ul>
                     </div>
@@ -166,7 +187,7 @@ function ItemShopingList(props) {
                 <div className="list_folder-tools" onClick={() => handleKindOfProduct("tools")}>
                     <div className={`button tools ${selectItems === "tools" ? "active" : null}`} > sprzet domowy</div>
                     <ul className={`list_table tools-list ${selectItems === "tools" ? "active" : null}`}>
-                        sprzet domowy
+                        sprzet domowy ({numberTools.length})
                         {showShopingList("tools")}
                     </ul>
                 </div>
@@ -174,7 +195,7 @@ function ItemShopingList(props) {
                 <div className="list_folder-other" onClick={() => handleKindOfProduct("other")}>
                     <div className={`button other ${selectItems === "other" ? "active" : null}`}>inne</div>
                     <ul className={`list_table other-list ${selectItems === "other" ? "active" : null}`}>
-                        inne
+                        inne ({numberOther.length})
                         {showShopingList("other")}
                     </ul>
                 </div>
