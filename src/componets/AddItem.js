@@ -99,7 +99,7 @@ function AddItem(props) {
     return (
 
 
-        <div className="conteiner-form">
+        <div className={`conteiner-form ${props.handleVisibieForm ? "hide" : ""}`}>
             <MuiThemeProvider theme={theme}>
                 <form className="form" action="">
                     <div className="form_input">

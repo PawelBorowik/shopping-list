@@ -1,8 +1,14 @@
 .conteiner-form{
-    width: 100%;
-    height: 45vh;
-    padding: 2px;  
-}
+width: 100%;
+margin-top: 10vh;
+height: 45vh;
+padding: 2px;
+} 
+.hide{
+display:none;
+
+} 
+
 .form{
 display: flex;
 flex-direction: column; 
