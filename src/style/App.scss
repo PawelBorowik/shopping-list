@@ -2,7 +2,16 @@
   min-height: 100vh;
   width: 100%;
   text-align: center;
-  margin-top: 12vh;
+  margin-top:20%;
+  @include mediaq(medium){
+    width:80%;
+    margin: 12% auto 0 auto;
+  }
+  @include mediaq(large){
+    width:60%;
+    margin: 7% auto 0 auto;
+
+  }
 }
 
 .App_head{
@@ -15,16 +24,36 @@
   background-color: $primary-color;
   border-radius: 0 20% 50% 50%/0 0 15% 30%;
   color: white;
-  z-index:1000;
+  z-index:99;
+  @include mediaq(medium){
+    width:80%;
+    left:10%;
+    right: 10%;
+  }
+  @include mediaq(medium){
+    width:60%;
+    left:20%;
+    right: 20%;
+  }
+  
+
   .App_title{
      text-align: left;
      font-size:  $font-size*2.5;
-     padding: 10px;   
+     padding: 10px;
+     @include mediaq(medium){
+       padding-left: 10%;
+      font-size:  $font-size*5;
+    }   
   }
   .App_icon{
     position: absolute;
     top:20px;
     right:20px;
+    @include mediaq(medium){
+      right: 100px;
+     font-size:  $font-size*3;
+   }   
     cursor: pointer;
     .App_arrow{
       display: inline-block;

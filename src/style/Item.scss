@@ -14,8 +14,7 @@
  
   
   .list_item{
-    font-size:  $font-size*2;
-    // font-family: $font-family-special;
+    font-size:  $font-size*1.8;
     width: 100%;
     padding:5px;
     text-align: left;
@@ -24,6 +23,10 @@
   .list_basket{
     font-size:  $font-size*2;
     padding: 5px 5px;
+    @include mediaq(large){
+      padding-left: 30px;
+  
+    }
   }
 
   .important{
@@ -33,8 +36,10 @@
   .list_delete-icon{
     font-size: 20px;
     padding: 5px 10px;
-    
     cursor: pointer;
+    @include mediaq(large){
+      padding-right: 20px;
+    }
   }
 
   .bought{

@@ -3,6 +3,10 @@ width: 100%;
 margin-top: 10vh;
 height: 45vh;
 padding: 2px;
+@include mediaq(large){
+  height:35vh ;
+
+}
 } 
 .hide{
 display:none;

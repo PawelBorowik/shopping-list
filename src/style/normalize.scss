@@ -1,6 +1,6 @@
 body {
   
-    margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
        sans-serif;
    };
@@ -11,10 +11,19 @@ body {
    $font-family-special: 'Courgette', cursive;
    $font-size:10px;
 
- $breakPoints:{
-     small: ( min-width:640px;),
-     medium: ( min-width:800px;),
-     large:( min-width:1200px),
- };
+ $breakPoints:(
+     small: (min-width:640px),
+     medium: (min-width:800px),
+     large: (min-width:1200px),
+ );
+
+ @mixin mediaq($breakPoint){
+     $size: map-get($breakPoints, $breakPoint);
+     @if($size){
+         @media #{$size}{
+             @content
+         }
+     }
+ }
   
   

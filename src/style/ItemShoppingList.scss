@@ -3,7 +3,6 @@
 .list_buttons{
     display:flex;
     margin: 5px;
-    // background-color: red;
     .list_delete-all-bought{
         margin-right: 5px;
         
@@ -21,10 +20,16 @@
     width: 90%;
     height: 90%;
     border: 2px solid $primary-color;
-    border-radius: 5px;
+    border-radius: 30px;
     z-index: 100;
     transition: 0.5s ease;
     color:$primary-color;
+    @include mediaq(medium){
+    left: 30%;
+    top:30%;
+    width: 40%;
+    height: 40%;
+    }
   }
   .dlaczegoflexniedziala{
      width: 100%;
@@ -42,7 +47,6 @@
   
   .list-button-warning-yes-no{
       margin: 20px;
-    //   background-color: red;
   }
 
 
@@ -67,25 +71,25 @@
 .all-list{
         left:30%;
         top:50px;
-        min-height: 1000px;
+        min-height: 300px;
         
     
   }
 .food-list{
     left:30%;
     top:100px;
-    min-height: 1000px;
+    min-height: 250px;
 
 }
 .clothes-list{
     left:30%;
     top:150px;
-    min-height: 1000px;
+    min-height: 200px;
 }
 .clean-list{
     left:30%;
     top:200px;
-    min-height: 1000px;
+    min-height: 150px;
 }
 .tools-list{
     left:30%;
@@ -96,6 +100,7 @@
     left:30%;
     right: 0;
     top:300px;
+    min-height: 100px;
 
     
 }
@@ -103,6 +108,8 @@
 
 .button{
     position:relative;
+    // font-family: $font-family-special;
+    text-transform: uppercase;
     width: 30%;
     height: 50px;
     cursor: pointer;
