@@ -12,6 +12,8 @@ function Item(props) {
     return (
 
         <li className="listli">
+            <div className={`list_basket ${props.item.bought ? "bought" : ""}`} onClick={() => props.handleBoughtItem(props.item.id)}>
+                <FontAwesomeIcon icon={faCartArrowDown} /></div>
 
             <div
                 className={`list_item ${props.item.checkbox ? "important" : ""} ${props.item.bought ? "bought" : ""}`}
@@ -20,8 +22,7 @@ function Item(props) {
             </div>
 
 
-            <div className="list_basket" onClick={() => props.handleBoughtItem(props.item.id)}>
-                <FontAwesomeIcon icon={faCartArrowDown} /></div>
+
 
 
             <div
