@@ -3,6 +3,8 @@ import Item from './Item'
 import Button from '@material-ui/core/Button';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
+
+//customizacja domyślnego kolory primar na własny
 const theme = createMuiTheme({
     palette: {
         primary: {
@@ -10,7 +12,6 @@ const theme = createMuiTheme({
         }
     },
 });
-
 
 function ItemShopingList(props) {
 
@@ -42,36 +43,31 @@ function ItemShopingList(props) {
         setItems(removeItem)
     }
     //obsluga przycisku usuwającego wszystkie kupione/wykreslone z listy produkty
-
     const handleRemovetAllBoughtItem = () => {
-
         let removeAllBoughtItem = itemsFromForm.filter(product => !product.bought)
         setItems(removeAllBoughtItem)
     }
 
     // funkcja wyswietlająca ostrzezenie przed usuniecem wszystkich elementów z listy
-
     const handleWarning = () => {
         setWarning(!warning)
     }
 
     //usuwanie listy zakupów
-
     const handleClearList = () => {
         setItems([])
         handleWarning()
     }
+
     // select okreslajacy rodzaj zakupw
     const handleKindOfProduct = options => {
         setSelectItems(options)
-
     }
 
     const showShopingList = (options) => {
-
         let shopingList = [...itemsFromForm]
-        if (selectItems === options) {
 
+        if (selectItems === options) {
             switch (selectItems) {
                 case "all":
                     return shopingList.map(item => <Item
@@ -129,34 +125,32 @@ function ItemShopingList(props) {
                 <div className=" list_buttons">
                     <div className="list_delete-all-bought">
                         <Button variant="outlined" size="small" color="primary"
-                            className="list_delete-all-bought"
                             onClick={() => handleRemovetAllBoughtItem()}>
                             usuń wszystkie kupione
-                </Button>
+                         </Button>
                     </div>
                     <div className="list_clear">
                         <Button variant="outlined" size="small" color="primary"
                             onClick={() => handleWarning()}>
-                            Wyczyśc liste zakupów
-                </Button>
+                            wyczyśc liste zakupów
+                        </Button>
                     </div>
-
                 </div>
 
 
                 <div className={`list_warning ${warning ? "show--warning" : ""} `}>
-                    <div className="dlaczegoflexniedziala">
+                    <div className="list_warning-alert">
                         <p>Czy na pewno chcesz usunąć wszytkie produkty z listy?</p>
 
                         <div className="list-button-warning-yes-no ">
                             <Button variant="outlined" size="large" color="primary"
                                 onClick={() => handleClearList()}>tak
-                </Button>
+                            </Button>
                         </div>
                         <div className="list-button-warning-yes-no ">
                             <Button variant="contained" size="large" color="primary"
                                 onClick={() => handleWarning()} >nie
-                 </Button>
+                            </Button>
                         </div>
                     </div>
                 </div>
@@ -165,40 +159,46 @@ function ItemShopingList(props) {
             <div className="list_select-kind" >
 
                 <div className="list_folder-all" onClick={() => handleKindOfProduct("all")}>
-                    <div className={`button all ${selectItems === "all" ? "active" : null}`}>wszystkie</div>
+                    <div className={`button all ${selectItems === "all" ? "active" : null}`}>
+                        wszystkie
+                    </div>
                     <ul className={`list_table all-list ${selectItems === "all" ? "active" : null}`}>
                         wszystkie ({itemsFromForm.length})
-
                         {showShopingList("all")}
                     </ul>
                 </div>
                 <div className="list_folder-food" onClick={() => handleKindOfProduct("food")} >
-                    <div className={`button food ${selectItems === "food" ? "active" : null}`}>spożywcze</div>
+                    <div className={`button food ${selectItems === "food" ? "active" : null}`}>
+                        spożywcze
+                    </div>
                     <ul className={`list_table food-list ${selectItems === "food" ? "active" : null}`}>
                         spożywcze ({numberFood.length})
-
                         {showShopingList("food")}
                     </ul>
                 </div>
                 <div className="list_folder-clothes" onClick={() => handleKindOfProduct("clothes")}>
-                    <div className={`button clothes ${selectItems === "clothes" ? "active" : null}`}>odzież</div>
+                    <div className={`button clothes ${selectItems === "clothes" ? "active" : null}`}>
+                        odzież
+                    </div>
                     <ul className={`list_table clothes-list ${selectItems === "clothes" ? "active" : null}`}>
                         odzież ({numberClothes.length})
-
                         {showShopingList("clothes")}
                     </ul>
                 </div>
                 <div className="list_folder-clean" onClick={() => handleKindOfProduct("clean")}>
-                    <div className={`button clean ${selectItems === "clean" ? "active" : null}`}>art. chemiczne</div>
+                    <div className={`button clean ${selectItems === "clean" ? "active" : null}`}>
+                        art. chemiczne</div>
                     <div>
                         <ul className={`list_table clean-list ${selectItems === "clean" ? "active" : null}`}>
                             art. chemiczne ({numberClean.length})
-                            {showShopingList("clean")}
+                        {showShopingList("clean")}
                         </ul>
                     </div>
                 </div>
                 <div className="list_folder-tools" onClick={() => handleKindOfProduct("tools")}>
-                    <div className={`button tools ${selectItems === "tools" ? "active" : null}`} > sprzęt domowy</div>
+                    <div className={`button tools ${selectItems === "tools" ? "active" : null}`} >
+                        sprzęt domowy
+                    </div>
                     <ul className={`list_table tools-list ${selectItems === "tools" ? "active" : null}`}>
                         sprzęt domowy ({numberTools.length})
                         {showShopingList("tools")}
@@ -206,19 +206,15 @@ function ItemShopingList(props) {
                 </div>
 
                 <div className="list_folder-other" onClick={() => handleKindOfProduct("other")}>
-                    <div className={`button other ${selectItems === "other" ? "active" : null}`}>inne</div>
+                    <div className={`button other ${selectItems === "other" ? "active" : null}`}>
+                        inne
+                    </div>
                     <ul className={`list_table other-list ${selectItems === "other" ? "active" : null}`}>
                         inne ({numberOther.length})
                         {showShopingList("other")}
                     </ul>
                 </div>
             </div>
-
-
-
-            {/* <table className="list_table">
-                {showShopingList()}
-            </table> */}
         </div >
     );
 }
