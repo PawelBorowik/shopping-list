@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import AddItem from './AddItem'
 import ShoppingList from './ItemShoppingList'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faList, faArrowUp } from '@fortawesome/free-solid-svg-icons'
+import { faCartArrowDown, faList, faArrowUp } from '@fortawesome/free-solid-svg-icons'
 
 
 function App() {
@@ -15,7 +15,6 @@ function App() {
   }
   const handleVisebleAddItemForm = () => {
     setChangeArrowIcons(!icon)
-
   }
 
   return (
@@ -23,7 +22,7 @@ function App() {
     <div className="App">
       <header>
         <div className="App_head">
-          <h1 className="App_title">Lista zakupów</h1>
+          <h1 className="App_title"><FontAwesomeIcon icon={faCartArrowDown} /> Lista zakupów</h1>
           <div className="App_icon" onClick={() => handleVisebleAddItemForm()}>
             <FontAwesomeIcon icon={faList} />
             <div className={`App_arrow ${icon ? "turn" : ""} `}>
