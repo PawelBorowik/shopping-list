@@ -38,14 +38,11 @@
 
   .show--warning{ 
     display:block;
-    
   }
   
   .list-button-warning-yes-no{
       margin: 20px;
   }
-
-
 
 .list_select-kind{
     position:relative;
@@ -97,7 +94,8 @@
   
 //położenie lewych przycisków
 .button{
-    position:relative;
+    position: absolute;
+    left:0;
     text-transform: uppercase;
     width: 30%;
     height: 50px;
@@ -108,35 +106,21 @@
     border-top-left-radius: 10px;
 }
 
-
 .all{
-    position: absolute;
-    left: 0;
     top: 0;
 }
 .food{
-    position: absolute;
-    left: 0;
     top: 50px;
 }
-
 .clothes{
-    position: absolute;
-    left: 0;
     top: 100px;
 }
 .clean{
-    position: absolute;
-    left: 0;
     top: 150px;
 }
 .tools{
-    position: absolute;
-    left: 0;
     top: 200px;
 }
 .other{
-    position: absolute;
-    left: 0;
     top: 250px;
 }
