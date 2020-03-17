@@ -1,10 +1,11 @@
 .conteiner-form{
 width: 100%;
-margin-top: 10vh;
-height: 45vh;
+margin-top: 60px;
+height: 250px;
 padding: 2px;
-  @include mediaq(large){
-  height:35vh ;
+  @include mediaq(medium){
+    height: 300px;
+  margin-bottom: 20px;
   }
 }
 //ukrywanie formularza 

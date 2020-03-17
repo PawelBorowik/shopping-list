@@ -2,14 +2,14 @@
   min-height: 100vh;
   width: 100%;
   text-align: center;
-  margin-top:20%;
+  margin-top:70px;
   @include mediaq(medium){
     width:80%;
-    margin: 12% auto 0 auto;
+    margin: 130px auto 0 auto;
   }
   @include mediaq(large){
     width:60%;
-    margin: 7% auto 0 auto;
+    margin: 130px auto 0 auto;
 
   }
 }
@@ -27,6 +27,7 @@
   z-index:99;
   @include mediaq(medium){
     width:80%;
+    height: 120px;
     left:10%;
     right: 10%;
   }
