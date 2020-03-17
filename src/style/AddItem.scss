@@ -3,53 +3,45 @@ width: 100%;
 margin-top: 10vh;
 height: 45vh;
 padding: 2px;
-@include mediaq(large){
+  @include mediaq(large){
   height:35vh ;
-
+  }
 }
-} 
+//ukrywanie formularza 
 .hide{
 display:none;
-
 } 
 
 .form{
 display: flex;
 flex-direction: column; 
 height: 35vh;
-}
-
-.form_input{
-display:flex;
-flex-basis: 25%;
-justify-content: center;
-align-items: center;
-}
-
-      
-.form_important{
-      display: flex;
-      flex-basis:15%;
-      font-size: $font-size*2;
-      justify-content: center;
-      align-items: center;
-    }
-    
-.form_kind{
-      display: flex;
-      flex-basis:25%;
-      justify-content: center;
-      align-items: center;
+  .form_input{
+  display:flex;
+  flex-basis: 25%;
+  justify-content: center;
+  align-items: center;
   }
-    
- .form_button-area{
+  .form_important{
+   display: flex;
+   flex-basis:15%;
+   font-size: $font-size*2;
+   justify-content: center;
+   align-items: center;
+   }
+  .form_kind{
+   display: flex;
+   flex-basis:25%;
+   justify-content: center;
+   align-items: center;
+   }
+  .form_button-area{
   display: flex;
   flex-basis:25%;
   justify-content: center;
   align-items: center;
   }
-
-   
+} 
         
     
     
