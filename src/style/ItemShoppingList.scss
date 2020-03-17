@@ -1,17 +1,13 @@
-
-  
+ 
 .list_buttons{
     display:flex;
     margin: 5px;
     .list_delete-all-bought{
         margin-right: 5px;
-        
       }
-     
-    
-}
-  
-  .list_warning{
+    }
+    // ostrzeżenie przed usuneciem całej listy zakupow
+     .list_warning{
     position: fixed;
     background-color: #eee;
     display:none;
@@ -24,14 +20,14 @@
     z-index: 100;
     transition: 0.5s ease;
     color:$primary-color;
-    @include mediaq(medium){
-    left: 30%;
-    top:30%;
-    width: 40%;
-    height: 40%;
-    }
+        @include mediaq(medium){
+        left: 30%;
+        top:30%;
+        width: 40%;
+         height: 40%;
+        }
   }
-  .dlaczegoflexniedziala{
+  .list_warning-alert{
      width: 100%;
      height: 100% ; 
     display: flex;
@@ -53,9 +49,7 @@
 
 .list_select-kind{
     position:relative;
-    min-height: 1000px;
-    
-    
+    min-height: 1000px;   
 }
 .list_table  {
     position: absolute;
@@ -63,23 +57,21 @@
     background-color: white;
     border-top: 1px solid gray;
 }
-
+//aktywna zakładka 
 .active{
     z-index:1;
     background-color: #eee;
 }
+//połozenie kart z listami zakupów
 .all-list{
-        left:30%;
-        top:50px;
-        min-height: 300px;
-        
-    
-  }
+    left:30%;
+    top:50px;
+    min-height: 300px;  
+}
 .food-list{
     left:30%;
     top:100px;
     min-height: 250px;
-
 }
 .clothes-list{
     left:30%;
@@ -100,15 +92,12 @@
     left:30%;
     right: 0;
     top:300px;
-    min-height: 100px;
-
-    
+    min-height: 100px   
 }
   
-
+//położenie lewych przycisków
 .button{
     position:relative;
-    // font-family: $font-family-special;
     text-transform: uppercase;
     width: 30%;
     height: 50px;
@@ -117,10 +106,6 @@
     border-bottom: 0;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
-     
-    
-    
-
 }
 
 
