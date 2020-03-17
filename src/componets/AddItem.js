@@ -22,25 +22,18 @@ const theme = createMuiTheme({
 
 const useStyles = makeStyles(theme => ({
     root: {
-
-
         '& > *': {
             margin: theme.spacing(1),
             width: 300,
-
         },
     },
     formControl: {
         margin: theme.spacing(1),
         minWidth: 300,
-
-
     },
     selectEmpty: {
         marginTop: theme.spacing(2),
     },
-
-
 }));
 
 function AddItem(props) {
@@ -75,15 +68,10 @@ function AddItem(props) {
     }
     const AddNewItem = () => {
         if (!text || selectItem === "empty") {
-
             setAlert("pole musi być uzupełnione")
-
         }
-
-
         else {
             let newItem = { id, text, checkbox, bought, selectItem }
-
             setText("")
             setCheckbox(false)
             setSelectItem("empty")
@@ -98,7 +86,6 @@ function AddItem(props) {
 
     return (
 
-
         <div className={`conteiner-form ${props.handleVisibieForm ? "hide" : ""}`}>
             <MuiThemeProvider theme={theme}>
                 <form className="form" action="">
@@ -107,15 +94,11 @@ function AddItem(props) {
                             <TextField id="outlined-basic" label="Dodaj produkt"
                                 variant="outlined" value={text} onChange={handleChangeText}
                                 error={emptyInput && alert} helperText={!text ? alert : null} />
-
                         </div>
                     </div>
 
-
                     <div className="form_important">
-
                         <FormControl component="fieldset">
-
                             <FormControlLabel
                                 value="end"
                                 control={<Checkbox color="primary" />}
@@ -131,7 +114,7 @@ function AddItem(props) {
                         <FormControl variant="outlined" className={classes.formControl} error={selectItem === "empty" && alert}>
                             <InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">
                                 Wybierz kategorię produktu
-                        </InputLabel>
+                            </InputLabel>
                             <Select
                                 labelId="demo-simple-select-outlined-label"
                                 id="demo-simple-select-outlined"
@@ -150,19 +133,14 @@ function AddItem(props) {
                         </FormControl>
                     </div>
                     <div className="form_button-area">
-
                         <Button variant="outlined" color="primary"
-                            onClick={() => AddNewItem()}>Dodaj do listy zakupów
+                            onClick={() => AddNewItem()}>
+                            Dodaj do listy zakupów
                         </Button>
-
-
                     </div>
                 </form>
             </MuiThemeProvider>
         </div>
-
-
-
     );
 }
 
