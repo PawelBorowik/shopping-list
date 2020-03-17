@@ -1,31 +1,23 @@
 
-
-  
   .listli{
     display: flex;
     width: 100%;
     cursor: pointer;
-    &:nth-child(even){
-    background:#ccc;
-    
+       &:nth-child(even){
+      background:#ccc;
+    }
   }
-    
-  }
- 
-  
   .list_item{
     font-size:  $font-size*1.8;
     width: 100%;
     padding:5px;
     text-align: left;
   }
-
   .list_basket{
     font-size:  $font-size*2;
     padding: 5px 5px;
-    @include mediaq(large){
+      @include mediaq(large){
       padding-left: 30px;
-  
     }
   }
 
@@ -37,7 +29,7 @@
     font-size: 20px;
     padding: 5px 10px;
     cursor: pointer;
-    @include mediaq(large){
+      @include mediaq(large){
       padding-right: 20px;
     }
   }
