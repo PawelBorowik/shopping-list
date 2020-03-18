@@ -1,10 +1,10 @@
 .conteiner-form{
 width: 100%;
 margin-top: 60px;
-height: 250px;
+height: 300px;
 padding: 2px;
   @include mediaq(medium){
-    height: 300px;
+  height: 350px;
   margin-bottom: 20px;
   }
 }
